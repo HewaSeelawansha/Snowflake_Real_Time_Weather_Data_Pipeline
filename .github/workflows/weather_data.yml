@@ -19,7 +19,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install Dependencies
-        run: pip install Flask snowflake-connector-python requests python-dotenv
+        run: pip install snowflake-connector-python requests python-dotenv
 
       - name: Run Weather Data Fetch
         env:

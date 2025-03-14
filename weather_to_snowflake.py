@@ -1,13 +1,10 @@
 import os
 import snowflake.connector
 import requests
-from flask import Flask, jsonify
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-
-app = Flask(__name__)
 
 def insert_weather_data():
     # Snowflake Connection
@@ -70,16 +67,7 @@ def insert_weather_data():
     cur.close()
     conn.close()
 
-    return {"message": "Data Inserted Successfully!"}
-
-@app.route('/')
-def home():
-    return "Hello, World!"
-
-@app.route('/weather-data', methods=['GET'])
-def get_weather_data():
-    result = insert_weather_data()
-    return jsonify(result)
+    print("Data Inserted Successfully!")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    insert_weather_data()
